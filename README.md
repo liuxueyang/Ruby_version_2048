@@ -1,2 +1,11 @@
 # Ruby_version_2048
-This is a small 2048 game of Ruby version. played in terminal.
+
+==Ruby Implementation of 2048 game==
+
+* Played in terminal.
+* Control with arrow keys or vim-keybindings.
+
+
+This is what you will see:
+
+![My Desktop](./img/2048.png)
