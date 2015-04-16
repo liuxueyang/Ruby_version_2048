@@ -1,6 +1,6 @@
 # Ruby_version_2048
 
-==Ruby Implementation of 2048 game==
+##Ruby Implementation of 2048 game
 
 * Played in terminal.
 * Control with arrow keys or vim-keybindings.
