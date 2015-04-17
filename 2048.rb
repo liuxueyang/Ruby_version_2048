@@ -184,7 +184,7 @@ while true
   $end = Time.now
   $time_gap = $end - $start 
   $seconds = $time_gap % 60
-  $minutes = ($time_gap - $seconds) % 3600
+  $minutes = (($time_gap - $seconds) % 3600) / 60
   $hours = $time_gap / 3600
   if win?(mar) 
     puts "Congratulations! You Win!"
