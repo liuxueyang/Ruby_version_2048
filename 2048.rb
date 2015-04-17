@@ -1,23 +1,30 @@
 #!/usr/bin/ruby 
 
+# Author      : v@ynn0n10
+# Github      : https://github.com/liuxueyang
+# Email       : liuxueyang457@163.com
+# Blog        : liuxueyang.github.io
+# Date        : 2015/04/17 Friday
+# Description : ruby implementation of 2048 game
+
 require "io/console"
 require "time"
 
 mar = Array.new(16, 0) # sheet value array
-$score = 0
-$target = 2048
-$pieces = 0
+$score      = 0
+$target     = 2048
+$pieces     = 0
 
-$colo = Hash.new
-$colo[2] = 30
-$colo[4] = 31
-$colo[8] = 32
-$colo[16] = 33
-$colo[32] = 34
-$colo[64] = 35
-$colo[128] = 36
-$colo[256] = 37
-$colo[512] = 42
+$colo       = Hash.new
+$colo[2]    = 30
+$colo[4]    = 31
+$colo[8]    = 32
+$colo[16]   = 33
+$colo[32]   = 34
+$colo[64]   = 35
+$colo[128]  = 36
+$colo[256]  = 37
+$colo[512]  = 42
 $colo[1024] = 45
 $colo[2048] = 41
 
