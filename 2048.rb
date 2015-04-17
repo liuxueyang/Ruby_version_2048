@@ -172,9 +172,8 @@ while true
   sheet(mar)
   direc = read_char
   if direc == "q" || direc == "\e" || direc == "\u0003"
-    $end = Time.now
     printf("Your score: %d\n", $score)
-    printf("This game lasted %d seconds.\n\n", $end - $start)
+    printf("This game lasted %02d:%02d:%02d.\n\n", $hours, $minutes, $seconds)
     break 
   end
   add(mar, direc)
@@ -182,16 +181,20 @@ while true
   system "clear"
   sheet(mar)
 
+  $end = Time.now
+  $time_gap = $end - $start 
+  $seconds = $time_gap % 60
+  $minutes = ($time_gap - $seconds) % 3600
+  $hours = $time_gap / 3600
   if win?(mar) 
     puts "Congratulations! You Win!"
-    printf("This game lasted %d seconds.\n\n", $end - $start)
+    printf("This game lasted %02d:%02d:%02d.\n\n", $hours, $minutes, $seconds)
     break
   end
 
   if lose?(mar) 
-    $end = Time.now
     printf("Your score: %d\n", $score)
-    printf("This game lasted %d seconds.\n", $end - $start)
+    printf("This game lasted %02d:%02d:%02d.\n\n", $hours, $minutes, $seconds)
     puts "You have lost, better luck next time T^T...\n\n"
     break
   end
