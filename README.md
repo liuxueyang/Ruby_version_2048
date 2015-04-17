@@ -7,6 +7,10 @@
 * Played in terminal.
 * Control with arrow keys or vim-keybindings.
 
+This is what you will see:
+
+![My Desktop](./img/2048_1.png)
+
 ###Version 2
 
 * Add the color of numbers 
@@ -14,4 +18,4 @@
 
 This is what you will see:
 
-![My Desktop](./img/2048.png)
+![My Desktop](./img/2048_2.png)
