@@ -1,11 +1,25 @@
 #!/usr/bin/ruby 
 
 require "io/console"
+require "time"
 
 mar = Array.new(16, 0) # sheet value array
 $score = 0
 $target = 2048
 $pieces = 0
+
+$colo = Hash.new
+$colo[2] = 30
+$colo[4] = 31
+$colo[8] = 32
+$colo[16] = 33
+$colo[32] = 34
+$colo[64] = 35
+$colo[128] = 36
+$colo[256] = 37
+$colo[512] = 42
+$colo[1024] = 45
+$colo[2048] = 41
 
 def operate(mar, ran, gap)
   mark = false
@@ -102,7 +116,10 @@ end
 def sheet(mar) 
   printf("%s\n", "I am a vimer. So you can use vim-keybindings -.-")
   printf("%s\n", "You can also use direction keys...")
-  puts "Besides, press 'q' or 'ESC' to quit."
+  puts "Press 'q' or 'ESC' to quit."
+  
+  printf("\nRuby 2048 (https://github.com/liuxueyang/Ruby_version_2048)\n")
+  print Time.now.rfc2822
   printf("\n\n    target = %-4d pieces = %-4d score = %-4d\n", $target, $pieces, $score)
   printf("\n%s%s\n", " " * 5, "~" * 35)
   printf("%s%s\n\n", " " * 5, "~" * 35)
@@ -112,7 +129,7 @@ def sheet(mar)
         "-" * 6 + "\\", " " * 8)
   16.times { |i|
     if mar[i] != 0
-      printf("|%5d ", mar[i])
+      printf("|\033[%dm%5d \033[0m", $colo[mar[i]], mar[i])
     else 
       printf("|%5s ", " ")
     end 
@@ -147,6 +164,7 @@ ensure
 end
 
 
+$start = Time.now
 genera_num(mar)
 $pieces += 1
 system "clear"
@@ -154,6 +172,9 @@ while true
   sheet(mar)
   direc = read_char
   if direc == "q" || direc == "\e" || direc == "\u0003"
+    $end = Time.now
+    printf("Your score: %d\n", $score)
+    printf("This game lasted %d seconds.\n\n", $end - $start)
     break 
   end
   add(mar, direc)
@@ -163,11 +184,15 @@ while true
 
   if win?(mar) 
     puts "Congratulations! You Win!"
+    printf("This game lasted %d seconds.\n\n", $end - $start)
     break
   end
 
   if lose?(mar) 
-    puts "Sorry, You are a loser..."
+    $end = Time.now
+    printf("Your score: %d\n", $score)
+    printf("This game lasted %d seconds.\n", $end - $start)
+    puts "You have lost, better luck next time T^T...\n\n"
     break
   end
   system "clear"
