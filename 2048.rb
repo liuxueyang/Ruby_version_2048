@@ -175,15 +175,19 @@ $start = Time.now
 genera_num(mar)
 $pieces += 1
 system "clear"
+$onece = false
 while true
   sheet(mar)
   direc = read_char
   if direc == "q" || direc == "\e" || direc == "\u0003"
     printf("Your score: %d\n", $score)
-    printf("This game lasted %02d:%02d:%02d.\n\n", $hours, $minutes, $seconds)
+    if $once 
+      printf("This game lasted %02d:%02d:%02d.\n\n", $hours, $minutes, $seconds)
+    end 
     break 
   end
   add(mar, direc)
+  $once = true
 
   system "clear"
   sheet(mar)
